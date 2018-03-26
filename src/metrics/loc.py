@@ -1,8 +1,8 @@
-class loc:
-    def __init__(self,filepath):
+class LinesOfCode:
+    def __init__(self, filepath):
         self.file = filepath
 
-    def countLines():
+    def countLines(self):
         """ Although this could be accomplished with one pass through the file,
             multiple passes are used for simpler counting methods. Choosing this approach 
             does not change the time complexity of O(n) """
@@ -12,7 +12,7 @@ class loc:
         # anything not in a previous category is a considered a statement
         self.statementLines = self.countTotalLines() - (self.commentLines + self.emptyLines + self.importLines) 
 
-    def getCount(comments=False, emptyLines = False, importStatements = False):
+    def getCount(self, comments=False, emptyLines = False, importStatements = False):
         result = self.statementLines
         if comments:
             result += self.commentLines
@@ -21,14 +21,19 @@ class loc:
         if importStatements:
             result += self.importLines
 
-    def countCommentLines():
+    def countCommentLines(self):
         raise NotImplementedError
 
-    def countEmptyLines():
+    def countEmptyLines(self):
         raise NotImplementedError       
 
-    def countImportLines():
+    def countImportLines(self):
         raise NotImplementedError
 
-    def countTotalLines():
-        raise NotImplementedError
+    def countTotalLines(self):
+        f = open(self.file, 'r')
+        lineCount = 0
+        for line in f:
+            lineCount += 1
+        f.close()
+        return lineCount
