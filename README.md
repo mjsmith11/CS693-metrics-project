@@ -1,11 +1,15 @@
 # CS693-metrics-project
-Python 3.6.4
+This project is written and tested using Python 3.6.4 on Ubuntu.
+
+## Running Tests
+Currently, Tests can only be run for one test file at a time. Example
+`python TestLOC.py`
+A -v flag may be added for verbose output.
 
 ## Metrics
 ### Lines of Code (LOC)
 This is a count of the lines in the given source code. All lines inside of a block comment are counted as comments even if they would be counted as a blank line or import statement outside of the comment block. Accurate calculation of this metric is subject to the following limitations:
 
-* Block comments cannot be started and ended on the same line.
 * The """ starting a block comment must be the first thing other than whitespace on the line
 * The """ ending a block comment must be the last thing other than whitespace on the line
 

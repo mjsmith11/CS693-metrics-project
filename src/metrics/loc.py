@@ -4,6 +4,7 @@ class LinesOfCode:
     def __init__(self, filepath):
         self.file = filepath
  
+    
     def countLines(self):
         """ Although this could be accomplished with one pass through the file,
             multiple passes are used for simpler counting methods. Choosing this approach 
@@ -14,7 +15,7 @@ class LinesOfCode:
         # anything not in a previous category is a considered a statement
         self.statementLines = self.countTotalLines() - (self.commentLines + self.emptyLines + self.importLines) 
 
-    def getCount(self, comments=False, emptyLines = False, importStatements = False):
+    def getCount(self, comments=False, emptyLines = False, importStatements = True):
         result = self.statementLines
         if comments:
             result += self.commentLines
@@ -46,7 +47,10 @@ class LinesOfCode:
                     #A line in the middle of the block comment
                     count += 1
             else:
-                if(line.startswith(self.TRIPLE_QUOTE)):
+                if(line.startswith(self.TRIPLE_QUOTE) and line.endswith(self.TRIPLE_QUOTE) and len(line)>5):
+                    #single line block comment. Note 3,4,or 5 quotes satisfy the first two conditions but only open the comment. It is not closed
+                    count += 1
+                elif(line.startswith(self.TRIPLE_QUOTE)):
                     #starting a block comment and this whole line is part of the comment
                     inCommentBlock = True
                     count += 1
@@ -59,10 +63,12 @@ class LinesOfCode:
         count = 0
         inCommentBlock = False
         for line in f:
-            if(self.TRIPLE_QUOTE in line):
+            if(line.startswith(self.TRIPLE_QUOTE)):
+                inCommentBlock = not inCommentBlock
+            if(line.endswith(self.TRIPLE_QUOTE)):
                 inCommentBlock = not inCommentBlock
             # strip removes whitespace from beginning and end of string. String is false if it is ""
-            elif(not (line.strip() or inCommentBlock)): 
+            if(not (line.strip() or inCommentBlock)): 
                 count += 1
         f.close()
         return count     
@@ -77,7 +83,10 @@ class LinesOfCode:
                 if (line.endswith(self.TRIPLE_QUOTE)):
                     inCommentBlock = False
             else:
-                if (line.startswith(self.TRIPLE_QUOTE)):
+                if(line.startswith(self.TRIPLE_QUOTE) and line.endswith(self.TRIPLE_QUOTE) and len(line)>5):
+                    #single line block comment. Note 3,4,or 5 quotes satisfy the first two conditions but only open the comment. It is not closed
+                    pass
+                elif (line.startswith(self.TRIPLE_QUOTE)):
                     inCommentBlock = True
                 elif (self.isImport(line)):
                     count += 1
