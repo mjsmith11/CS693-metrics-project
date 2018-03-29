@@ -1,11 +1,13 @@
 class LinesOfCode:
+    TRIPLE_QUOTE = "\"\"\""
+
     def __init__(self, filepath):
         self.file = filepath
  
     def countLines(self):
         """ Although this could be accomplished with one pass through the file,
             multiple passes are used for simpler counting methods. Choosing this approach 
-            does not change the time complexity of O(n) """
+            does not change the time complexity of O(n) """ 
         self.commentLines = self.countCommentLines()
         self.emptyLines = self.countEmptyLines()
         self.importLines = self.countImportLines()
@@ -26,7 +28,6 @@ class LinesOfCode:
         f = open(self.file, 'r')
         count = 0
         inCommentBlock = False
-        tripleQuote = "\"\"\""
         for line in f:
             line = line.strip()
 
@@ -37,24 +38,18 @@ class LinesOfCode:
 
             #block comments
             if(inCommentBlock):
-                if(line.endswith(tripleQuote)):
+                if(line.endswith(self.TRIPLE_QUOTE)):
                     #end of block comment and this whole line is part of the comment
                     count += 1
-                    inCommentBlock = False
-                elif(tripleQuote in line):
-                    #comment block ends but there is something after it. This line doesn't count
                     inCommentBlock = False
                 else:
                     #A line in the middle of the block comment
                     count += 1
             else:
-                if(line.startswith(tripleQuote)):
+                if(line.startswith(self.TRIPLE_QUOTE)):
                     #starting a block comment and this whole line is part of the comment
                     inCommentBlock = True
                     count += 1
-                elif(tripleQuote in line):
-                    #block comment starts partway through this line.  This line doesn't count
-                    inCommentBlock = True
         f.close()
         return count
 
@@ -62,9 +57,12 @@ class LinesOfCode:
     def countEmptyLines(self):
         f = open(self.file, 'r')
         count = 0
+        inCommentBlock = False
         for line in f:
+            if(self.TRIPLE_QUOTE in line):
+                inCommentBlock = not inCommentBlock
             # strip removes whitespace from beginning and end of string. String is false if it is ""
-            if(not line.strip()): 
+            elif(not (line.strip() or inCommentBlock)): 
                 count += 1
         f.close()
         return count     
@@ -72,15 +70,28 @@ class LinesOfCode:
     def countImportLines(self):
         f = open(self.file, 'r')
         count = 0
+        inCommentBlock = False
         for line in f:
             line = line.strip()
-            pieces = line.split(" ")
-            if(pieces[0] == "import"):
-                count += 1
-            elif((pieces[0] == "from") and (pieces[2] == "import")):
-                count += 1
+            if (inCommentBlock):
+                if (line.endswith(self.TRIPLE_QUOTE)):
+                    inCommentBlock = False
+            else:
+                if (line.startswith(self.TRIPLE_QUOTE)):
+                    inCommentBlock = True
+                elif (self.isImport(line)):
+                    count += 1
         f.close()
         return count
+
+    def isImport(self, line):
+        pieces = line.split(" ")
+        if(pieces[0] == "import"):
+            return True
+        elif((pieces[0] == "from") and (pieces[2] == "import")):
+            return True
+        return False
+
 
     def countTotalLines(self):
         f = open(self.file, 'r')
