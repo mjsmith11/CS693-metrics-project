@@ -2,8 +2,10 @@
 This project is written and tested using Python 3.6.4 on Ubuntu.
 
 ## Running Tests
-Currently, Tests can only be run for one test file at a time. Example
-`python TestLOC.py`
+Currently, Tests can only be run for one test file at a time. 
+
+Example: `python TestLOC.py`
+
 A -v flag may be added for verbose output.
 
 ## Metrics
