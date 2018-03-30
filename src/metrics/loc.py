@@ -105,7 +105,7 @@ class LinesOfCode:
     def countTotalLines(self):
         f = open(self.file, 'r')
         lineCount = 0
-        for line in f:
+        for _ in f:
             lineCount += 1
         f.close()
         return lineCount
