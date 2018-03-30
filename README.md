@@ -18,3 +18,7 @@ This is a count of the lines in the given source code. All lines inside of a blo
 | Comments       | On, Off         | Off           | Should comments be counted? This includes single line comments starting with # (with no preceeding code) and block comments surrounded by """. |
 | Empty Lines    | On, Off         | Off           | Should lines containing only whitespace be counted? |
 | Import Statements | On, Off      | On            | Should import statements such as `import FOO` or  `from FOO import BAR` be counted? |
+
+
+##Credits
+* test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin
