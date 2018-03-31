@@ -3,8 +3,6 @@ Class for calculation Lack of Cohesion Metric 4. Construct with the file path
 Then call calculateModuleLCOM4 to obtain a dictionary of LCOM4 Values
 """
 import ast
-import sys
-import os
 from .astUtils import ClassNodeLister,FunctionNodeLister
 from ..lib import graph
 
