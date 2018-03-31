@@ -69,7 +69,28 @@ class TestGraph(unittest.TestCase):
 
         self.assertTrue("B" in g.graph["A"], "B should be A's neighbor")
         self.assertTrue("B" in g.graph["D"], "B should be D's neighbor")
-        self.assertTrue("A" in g.graph["D"], "A should be D's neighbor")      
+        self.assertTrue("A" in g.graph["D"], "A should be D's neighbor")   
+
+    def test_SingleConnectedComponent(self):
+        g = Graph()
+        g.add_edge("A","B")
+        g.add_edge("B","x")
+        g.add_edge("C","x")
+        g.add_edge("C","y")
+        g.add_edge("D","y")
+        g.add_edge("D","E")
+
+        self.assertEqual(g.countConnectedComponents(), 1, "Incorrect count")   
+
+    def test_TwoConnectedComponents(self):
+        g = Graph()
+        g.add_edge("A","B")
+        g.add_edge("B","x")
+        g.add_edge("C","y")
+        g.add_edge("D","y")
+        g.add_edge("D","E")
+
+        self.assertEqual(g.countConnectedComponents(), 2, "Incorrect count")   
 
 if __name__ == '__main__':
     unittest.main()

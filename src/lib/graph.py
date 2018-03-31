@@ -20,3 +20,24 @@ class Graph:
     def add_node(self, node):
         if not self.nodeExists(node):
             self.graph[node] = []
+
+    #returns the number of connected components.  This should be used for undirected graphs
+    def countConnectedComponents(self):
+        count = 0
+        visitedDict = {}
+        for key in self.graph:
+            visitedDict[key] = False
+        
+        for vertex, visited in visitedDict.items():
+            if not visited:
+                self.visitComponentNodes(vertex, visitedDict)
+                count += 1
+        
+        return count
+    
+    #Recursively mark all nodes in the same component as startNode using DFS
+    def visitComponentNodes(self, startNode, visitedDict):
+        visitedDict[startNode] = True
+        for node in self.graph[startNode]:
+            if not visitedDict[node]:
+                self.visitComponentNodes(node,visitedDict)
