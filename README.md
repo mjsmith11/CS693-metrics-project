@@ -29,7 +29,7 @@ LCOM4 number of the class. The `__init__` method is not considered in calculatio
 
 ## TODO
 [ ] Better paths in imports
-
+[ ] Test Suite
 
 ##Credits
 * test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin
