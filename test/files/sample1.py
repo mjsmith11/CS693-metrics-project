@@ -47,7 +47,7 @@ class CohesionExample2:
 
     def c(self):
         res = self.y / 2
-        res = res + self.y
+        res = res + self.x
         return res
 
     def d(self):
@@ -67,11 +67,12 @@ class CouplingExample1:
 
     def n1(self):
         self.otherClass.m1()
+        self.otherClass.x = 2
 
 class CouplingExample2:
 
     def __init__(self):
-        pass
+        self.x = 1
 
     def m1(self):
         pass

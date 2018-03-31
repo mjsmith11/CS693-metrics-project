@@ -21,6 +21,15 @@ This is a count of the lines in the given source code. All lines inside of a blo
 | Empty Lines    | On, Off         | Off           | Should lines containing only whitespace be counted? |
 | Import Statements | On, Off      | On            | Should import statements such as `import FOO` or  `from FOO import BAR` be counted? |
 
+### Lack of Cohesion Metric 4 (LCOM4)
+This is an improved version of the LCOM which is introduced by Chidamber and Kemerer. In this metric,
+methods ‘a’ and ‘b’ are related if they both access the same class-level variable or ‘a’ calls ‘b’ or ‘b’ calls
+‘a’. After determining the related methods, the number of separate connected groups will give the
+LCOM4 number of the class. The `__init__` method is not considered in calculation of this metric.
+
+## TODO
+[ ] Better paths in imports
+
 
 ##Credits
 * test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin

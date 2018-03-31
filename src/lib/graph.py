@@ -10,9 +10,11 @@ class Graph:
         self.add_node(node1)
         self.add_node(node2)
         
-        self.graph[node1].append(node2)
+        if node2 not in self.graph[node1]:
+            self.graph[node1].append(node2)
         if not self.directed:
-            self.graph[node2].append(node1)
+            if node1 not in self.graph[node2]:
+                self.graph[node2].append(node1)
 
     def nodeExists(self, node):
         return node in self.graph
