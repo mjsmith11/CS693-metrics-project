@@ -1,3 +1,8 @@
+""" Class for counting lines of code with options for including options for
+including comments, empty lines, and import statements.  This class is used by
+specifying a python file to analyze using the constructor.  Then call countLines to 
+analyze the python source.  Results can be obtained by calling getCount and providing
+desired options"""
 class LinesOfCode:
     TRIPLE_QUOTE = "\"\"\""
 
