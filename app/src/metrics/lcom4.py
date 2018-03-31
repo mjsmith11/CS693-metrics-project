@@ -1,29 +1,36 @@
+"""
+Class for calculation Lack of Cohesion Metric 4. Construct with the file path
+Then call calculateModuleLCOM4 to obtain a dictionary of LCOM4 Values
+"""
 import ast
-import astUtils
 import sys
-sys.path.append('../lib')
-import graph
+import os
+from .astUtils import ClassNodeLister,FunctionNodeLister
+from ..lib import graph
 
 class LCOM4:
     def __init__(self, filepath):
         self.file = filepath
-        self.tree = ast.parse(open(self.file).read())
+        f = open(self.file)
+        self.tree = ast.parse(f.read())
+        f.close()
         self.classNodes = []
 
-    def calculateModuleLOCM4(self):
+    """ Returns a dictionary keyed by class name and value LCOM4"""
+    def calculateModuleLCOM4(self):
         results = {}
         self.findClasses()
         for classNode in self.classNodes:
-            results[classNode.name] = self.calculateClassLOCM4(classNode)
+            results[classNode.name] = self.calculateClassLCOM4(classNode)
         return results
 
     def findClasses(self):
-        classVisiter = astUtils.ClassNodeLister()
+        classVisiter = ClassNodeLister()
         classVisiter.visit(self.tree)
         self.classNodes = classVisiter.getClassNodes()
 
-    def calculateClassLOCM4(self, classNode):
-        functionLister = astUtils.FunctionNodeLister()
+    def calculateClassLCOM4(self, classNode):
+        functionLister = FunctionNodeLister()
         functionLister.visit(classNode)
         functions = functionLister.getFunctionNodes()
         connectionGraph = graph.Graph(False)

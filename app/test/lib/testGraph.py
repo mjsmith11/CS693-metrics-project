@@ -1,7 +1,6 @@
 import unittest
 import sys
-sys.path.append('../../src/lib')
-from graph import Graph
+from ...src.lib.graph import Graph
 
 class TestGraph(unittest.TestCase):
     def test_createUnGraph(self):
@@ -91,6 +90,3 @@ class TestGraph(unittest.TestCase):
         g.add_edge("D","E")
 
         self.assertEqual(g.countConnectedComponents(), 2, "Incorrect count")   
-
-if __name__ == '__main__':
-    unittest.main()

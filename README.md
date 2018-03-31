@@ -2,11 +2,9 @@
 This project is written and tested using Python 3.6.4 on Ubuntu.
 
 ## Running Tests
-Currently, Tests can only be run for one test file at a time. 
-
-Example: `python TestLOC.py`
-
-A -v flag may be added for verbose output.
+1. Switch to the root directory of the project.
+1. `python -m unittest discover`
+1. Optional: Add `-v` to the command for verbose output
 
 ## Metrics
 ### Lines of Code (LOC)
@@ -26,10 +24,6 @@ This is an improved version of the LCOM which is introduced by Chidamber and Kem
 methods ‘a’ and ‘b’ are related if they both access the same class-level variable or ‘a’ calls ‘b’ or ‘b’ calls
 ‘a’. After determining the related methods, the number of separate connected groups will give the
 LCOM4 number of the class. The `__init__` method is not considered in calculation of this metric.
-
-## TODO
-[ ] Better paths in imports
-[ ] Test Suite
 
 ##Credits
 * test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin
