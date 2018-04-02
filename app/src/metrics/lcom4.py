@@ -50,6 +50,6 @@ class AttributeLister(ast.NodeVisitor):
         return self.attributesReferenced
 
     def visit_Attribute(self, node):
-        if getattr(node.value, 'id', "") == "self" or getattr(node.value, 'attr', "") == "self": #ensure that we don't count attributes of other classes
+        if getattr(node.value, 'id', "") == "self": #ensure that we don't count attributes of other classes
             self.attributesReferenced.append(node.attr)
         self.generic_visit(node)
