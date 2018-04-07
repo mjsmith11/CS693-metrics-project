@@ -3,7 +3,7 @@ This project is written and tested using Python 3.6.4 on Ubuntu.
 
 ## Running Tests
 1. Switch to the root directory of the project.
-1. `python -m unittest discover`
+1. `python3.6 -m unittest discover`
 1. Optional: Add `-v` to the command for verbose output
 
 ## Metrics
