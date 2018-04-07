@@ -23,7 +23,20 @@ This is a count of the lines in the given source code. All lines inside of a blo
 This is an improved version of the LCOM which is introduced by Chidamber and Kemerer. In this metric,
 methods ‘a’ and ‘b’ are related if they both access the same class-level variable or ‘a’ calls ‘b’ or ‘b’ calls
 ‘a’. After determining the related methods, the number of separate connected groups will give the
-LCOM4 number of the class. The `__init__` method is not considered in calculation of this metric.
+LCOM4 number of the class. The `__init__` method is not considered in calculation of this metric. No parameters
+are available for this metric.
+
+### Coupling Between Objects (CBO)
+This counts the number of connections between two classes.  Therefore it is only applicable for a pair of classes.
+CBO is calculated for each pair of classes in the input.
+
+Two classes are coupled when methods declared in one class use methods or instance variables defined by the other class.
+The uses relationship can go either way: both used and used-by relationships are taken into account, but only once.
+Only method class and variable references are counted.
+
+#### Limitations
+ - An instance varable or local variable must be instantiated using the constructor of its class for the calculation to identify it as that type.
+ - Variables that change type cannot be handled.
 
 ##Credits
 * test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin
