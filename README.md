@@ -8,10 +8,14 @@ Python source files can be analyzed using the `metrics_cli.py` file located in t
 
 required arguments:
 
+|     |     |
+| --- | --- |
 | file | path to input file for analysis |
 
 optional arguments:
 
+|     |     |     |
+| --- | --- | --- |
 | -h | --help | show help message and exit |
 | -c | --comments | include comments in the LOC metric |
 | -e | --empty | include empty lines in the LOC metric |
