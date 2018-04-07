@@ -1,5 +1,5 @@
 import ast
-from .astUtils import InheritanceTreeBuilder
+from .astUtils import InheritanceTreeBuilder,ClassNodeLister
 
 class NOC:
     def __init__(self, filepath):
@@ -7,12 +7,22 @@ class NOC:
         f = open(self.file)
         self.tree = ast.parse(f.read())
         f.close()
+        self.classNames = []
+
+    def findClasses(self):
+        classVisiter = ClassNodeLister()
+        classVisiter.visit(self.tree)
+
+        classNodes = classVisiter.getClassNodes()
+        for node in classNodes:
+            self.classNames.append(node.name)
 
     def calculateAll(self):
         results = {}
+        self.findClasses()
         self.buildTree()
         for className in self.inheritanceTree.graph:
-            if not (className=="~" or className=="object"):
+            if className in self.classNames:
                 results[className] = self.calculateOne(className)
         return results
 

@@ -45,7 +45,11 @@ class InheritanceTreeBuilder(ast.NodeVisitor):
     def visit_ClassDef(self,node):
         if len(node.bases)>0:
             for base in node.bases:
-                self.add_edge(base.id, node.name)
+                if isinstance(base, ast.Attribute):
+                    baseClass = base.attr
+                elif isinstance(base, ast.Name):
+                    baseClass = base.id
+                self.add_edge(baseClass, node.name)
         else:
             self.add_edge("~", node.name)
         self.generic_visit(node)
