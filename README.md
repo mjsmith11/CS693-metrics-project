@@ -1,6 +1,25 @@
 # CS693-metrics-project
 This project is written and tested using Python 3.6.4 on Ubuntu.
 
+## Analyzing a python file
+Python source files can be analyzed using the `metrics_cli.py` file located in the root directory of the project. Results are printed to the screen. The command format is:
+
+    python3.6 metrics_cli.py [-h] [-c {on,off}] [-e {on,off}] [-i {on,off}] [-o {on,off}] [-n {on,off}] file
+
+required arguments:
+
+| file | path to input file for analysis |
+
+optional arguments:
+
+| -h | --help | show help message and exit |
+| -c | --comments | include comments in the LOC metric |
+| -e | --empty | include empty lines in the LOC metric |
+| -i | --imports | include import lines in the LOC metric |
+| -o | --object | include the object class in the DIT metric |
+| -n | --init | include the constructor in the WMC metric |
+
+
 ## Running Tests
 1. Switch to the root directory of the project.
 1. `python3.6 -m unittest discover`
