@@ -1,6 +1,5 @@
 import ast
-from .astUtils import ClassNodeLister,FunctionNodeLister,InheritanceTreeBuilder
-from ..lib.graph import Graph
+from .astUtils import InheritanceTreeBuilder
 
 class NOC:
     def __init__(self, filepath):

@@ -60,5 +60,11 @@ This is the number of immediate subclasses for each class. A class 'A' may be ex
 
 No parameters are available for this metric.
 
+### Weighted Methods Per Class (WMC)
+This is the number of methods for each class.  The parameter specifies whether to include the constructor or not.
+| Parameter name | Possible Values | Default Value | Explaination |
+| -------------- | --------------- | ------------- | ------------ |
+| Constructor     | On, Off         | Off           | Constructor in python is used to instantiate an object and is the method with the name `__init__`. |
+
 ##Credits
 * test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin

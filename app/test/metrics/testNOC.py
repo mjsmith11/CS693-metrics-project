@@ -1,5 +1,4 @@
 import unittest
-import ast
 import os.path
 from ...src.metrics.noc import NOC
 

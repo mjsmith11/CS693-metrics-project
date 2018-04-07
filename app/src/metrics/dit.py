@@ -1,5 +1,5 @@
 import ast
-from .astUtils import ClassNodeLister,FunctionNodeLister,InheritanceTreeBuilder
+from .astUtils import InheritanceTreeBuilder
 from ..lib.graph import Graph
 
 class DIT:
