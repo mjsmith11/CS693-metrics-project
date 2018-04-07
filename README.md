@@ -34,11 +34,14 @@ Two classes are coupled when methods declared in one class use methods or instan
 The uses relationship can go either way: both used and used-by relationships are taken into account, but only once.
 Only method class and variable references are counted.
 
+No parameters are available for this metric.
+
 #### Known Limitations
  - An instance varable or local variable must be instantiated using the constructor of its class for the calculation to identify it as that type.
  - Variables that change type cannot be handled.
 
- ### Depth of Inheritance Tree (DIT)
+
+### Depth of Inheritance Tree (DIT)
  This calculates the number of superclasses for each class. A class 'A' may be extending class 'B' and 'B' may be extending class 'C'. Assuming
  no other extends, the DITs of 'A', 'B', and 'C' are respectively 2, 1, 0. The parameter is including the object class or not, which is the base of all
  classes, sometimes omitted but sometimes included.  This increases the number of DIT by 1 if object is included and the parameter is set to On.
