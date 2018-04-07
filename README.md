@@ -6,18 +6,22 @@ Python source files can be analyzed using the `metrics_cli.py` file located in t
 
     python3.6 metrics_cli.py [-h] [-c {on,off}] [-e {on,off}] [-i {on,off}] [-o {on,off}] [-n {on,off}] file
 
-### required arguments:
+required arguments:
 
-    file        path to input file for analysis
+|     |     |
+| --- | --- |
+| file | path to input file for analysis |
 
-### optional arguments:
+optional arguments:
 
-    -h    --help        show help message and exit 
-    -c    --comments    include comments in the LOC metric 
-    -e    --empty       include empty lines in the LOC metric 
-    -i    --imports     include import lines in the LOC metric 
-    -o    --object      include the object class in the DIT metric 
-    -n    --init        include the constructor in the WMC metric 
+|     |     |     |
+| --- | --- | --- |
+| -h | --help | show help message and exit |
+| -c | --comments | include comments in the LOC metric |
+| -e | --empty | include empty lines in the LOC metric |
+| -i | --imports | include import lines in the LOC metric |
+| -o | --object | include the object class in the DIT metric |
+| -n | --init | include the constructor in the WMC metric |
 
 
 ## Running Tests
