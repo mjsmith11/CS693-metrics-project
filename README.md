@@ -34,9 +34,22 @@ Two classes are coupled when methods declared in one class use methods or instan
 The uses relationship can go either way: both used and used-by relationships are taken into account, but only once.
 Only method class and variable references are counted.
 
-#### Limitations
+#### Known Limitations
  - An instance varable or local variable must be instantiated using the constructor of its class for the calculation to identify it as that type.
  - Variables that change type cannot be handled.
+
+ ### Depth of Inheritance Tree (DIT)
+ This calculates the number of superclasses for each class. A class 'A' may be extending class 'B' and 'B' may be extending class 'C'. Assuming
+ no other extends, the DITs of 'A', 'B', and 'C' are respectively 2, 1, 0. The parameter is including the object class or not, which is the base of all
+ classes, sometimes omitted but sometimes included.  This increases the number of DIT by 1 if object is included and the parameter is set to On.
+
+| Parameter name | Possible Values | Default Value | Explaination |
+| -------------- | --------------- | ------------- | ------------ |
+| object class      | On, Off         | Off           | The class 'object' is the root of all classes in python. |
+
+#### Known Limitations
+ - Multiple inheritance is not fully supported. If the inheritance tree includes a class with multiple base classes, DIT will be calculated for one branch 
+ of the tree. There is no guarantee as to the branch that will be selected.
 
 ##Credits
 * test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin
