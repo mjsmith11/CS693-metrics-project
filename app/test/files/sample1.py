@@ -75,6 +75,8 @@ class CouplingExample2:
         self.x = 1
 
     def m1(self):
+        localOtherClass = CouplingExample1()
+        localOtherClass.n1()
         pass
 
 class DepthOfInheritanceExample1(object):

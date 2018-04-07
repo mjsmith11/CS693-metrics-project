@@ -9,7 +9,7 @@ class TestLOC(unittest.TestCase):
 
     def test_basics(self):
         obj = LinesOfCode(self.getPath())
-        self.assertEqual(obj.countTotalLines(),283,"Total Lines")
+        self.assertEqual(obj.countTotalLines(),285,"Total Lines")
         self.assertEqual(obj.countCommentLines(),176,"Comment Lines")
         self.assertEqual(obj.countEmptyLines(),34,"Empty Lines")
         self.assertEqual(obj.countImportLines(),1,"Import Lines")
@@ -19,14 +19,14 @@ class TestLOC(unittest.TestCase):
     def test_allOff(self):
         obj = LinesOfCode(self.getPath())
         obj.countLines()
-        expectedLines = 72
+        expectedLines = 74
         actualLines = obj.getCount(False, False, False)
         self.assertEqual(actualLines, expectedLines, "line count")
 
     def test_imports(self):
         obj = LinesOfCode(self.getPath())
         obj.countLines()
-        expectedLines = 73
+        expectedLines = 75
         actualLines = obj.getCount(False, False, True)
         self.assertEqual(actualLines, expectedLines, "line count")
 
@@ -36,42 +36,42 @@ class TestLOC(unittest.TestCase):
     def test_empty(self):
         obj = LinesOfCode(self.getPath())
         obj.countLines()
-        expectedLines = 106
+        expectedLines = 108
         actualLines = obj.getCount(False, True, False)
         self.assertEqual(actualLines, expectedLines, "line count")
 
     def test_emptyAndImports(self):
         obj = LinesOfCode(self.getPath())
         obj.countLines()
-        expectedLines = 107
+        expectedLines = 109
         actualLines = obj.getCount(False, True, True)
         self.assertEqual(actualLines, expectedLines, "line count")
 
     def test_comments(self):
         obj = LinesOfCode(self.getPath())
         obj.countLines()
-        expectedLines = 248
+        expectedLines = 250
         actualLines = obj.getCount(True, False, False)
         self.assertEqual(actualLines, expectedLines, "line count")
     
     def test_commentsAndImports(self):
         obj = LinesOfCode(self.getPath())
         obj.countLines()
-        expectedLines = 249
+        expectedLines = 251
         actualLines = obj.getCount(True, False, True)
         self.assertEqual(actualLines, expectedLines, "line count")
 
     def test_commentsAndEmpty(self):
         obj = LinesOfCode(self.getPath())
         obj.countLines()
-        expectedLines = 282
+        expectedLines = 284
         actualLines = obj.getCount(True, True, False)
         self.assertEqual(actualLines, expectedLines, "line count")
 
     def test_allOn(self):
         obj = LinesOfCode(self.getPath())
         obj.countLines()
-        expectedLines = 283
+        expectedLines = 285
         actualLines = obj.getCount(True, True, True)
         self.assertEqual(actualLines, expectedLines, "line count")
 
