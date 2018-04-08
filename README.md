@@ -1,10 +1,13 @@
 # CS693-metrics-project
-This project is written and tested using Python 3.6.4 on Ubuntu.
+## Environment Requirements
+ - Python v3.6.4
+ - Python is added to system path
+ - The command `python` refers to python v3.6.4
 
 ## Analyzing a python file
 Python source files can be analyzed using the `metrics_cli.py` file located in the root directory of the project. Results are printed to the screen. The command format is:
 
-    python3.6 metrics_cli.py [-h] [-c {on,off}] [-e {on,off}] [-i {on,off}] [-o {on,off}] [-n {on,off}] file
+    python metrics_cli.py [-h] [-c {on,off}] [-e {on,off}] [-i {on,off}] [-o {on,off}] [-n {on,off}] file
 
 required arguments:
 
@@ -26,7 +29,7 @@ optional arguments:
 
 ## Running Tests
 1. Switch to the root directory of the project.
-1. `python3.6 -m unittest discover`
+1. `python -m unittest discover`
 1. Optional: Add `-v` to the command for verbose output
 
 ## Metrics
