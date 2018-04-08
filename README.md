@@ -2,7 +2,7 @@
 ## Environment Requirements
  - Python v3.6.4
  - Python is added to system path
- - The command `python` refers to python v3.6.4
+ - The command `python` runs python v3.6.4
 
 ## Analyzing a python file
 Python source files can be analyzed using the `metrics_cli.py` file located in the root directory of the project. Results are printed to the screen. The command format is:
