@@ -80,6 +80,7 @@ No parameters are available for this metric.
 #### Known Limitations
  - Multiple inheritance is not fully supported. If the inheritance tree includes a class with multiple base classes, DIT will be calculated for one branch 
  of the tree. There is no guarantee as to the branch that will be selected.
+ - If a class refers to a base class whose defintion is not provided, that base class will be considered the top of the inheritance tree.
 
 ### Number of Children (NOC)
 This is the number of immediate subclasses for each class. A class 'A' may be extended by classes 'B' and 'C'. Assuming there are no other classes extending 'A', and 'B' and 'C' are not extended by any other class, the NOCs of 'A', 'B', 'C' ar respectively 2,0,0. 
