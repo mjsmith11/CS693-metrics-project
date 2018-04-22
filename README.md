@@ -95,4 +95,5 @@ This is the number of methods for each class.  The parameter specifies whether t
 | Constructor     | On, Off         | Off           | Constructor in python is used to instantiate an object and is the method with the name `__init__`. |
 
 ##Credits
-* test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin
+* app/test/files/sample1.py - Adapted from SampleIncludingAll1.py provided by Dr. Huseyin Ergin
+* app/test/files/CohesionExampleLCOM4is3.py and app/test/files/CouplingExampleCBOis5.py - Dr. Huseyin Ergin.
